@@ -59,6 +59,45 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 					/* ignore */
 				}
 			});
+
+			// Auto-fix relative paths for images and videos based on page depth
+			document.addEventListener('astro:page-load', function () {
+				try {
+					const pathname = window.location.pathname;
+					const segments = pathname.split('/').filter(s => s.length > 0);
+					const pathDepth = segments.length > 1 ? segments.length - 1 : 0;
+					const pathPrefix = pathDepth === 0 ? './' : '../'.repeat(pathDepth);
+
+					// Fix img src attributes starting with ./
+					for (const img of document.querySelectorAll('img[src^="./"]')) {
+						const src = img.getAttribute('src');
+						if (src) {
+							const relativePath = src.slice(2);
+							img.setAttribute('src', pathPrefix + relativePath);
+						}
+					}
+
+					// Fix video source src attributes starting with ./
+					for (const source of document.querySelectorAll('source[src^="./"]')) {
+						const src = source.getAttribute('src');
+						if (src) {
+							const relativePath = src.slice(2);
+							source.setAttribute('src', pathPrefix + relativePath);
+						}
+					}
+
+					// Fix video src attributes starting with ./
+					for (const video of document.querySelectorAll('video[src^="./"]')) {
+						const src = video.getAttribute('src');
+						if (src) {
+							const relativePath = src.slice(2);
+							video.setAttribute('src', pathPrefix + relativePath);
+						}
+					}
+				} catch (e) {
+					/* ignore */
+				}
+			});
 		}
 		</script>
 	</body>
