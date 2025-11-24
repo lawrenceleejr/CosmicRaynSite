@@ -1,6 +1,7 @@
 ---
 import clsx from "clsx";
 import ExternalLink from "./external-link.astro";
+import Link from "./link.astro";
 
 const pathname = Astro.url.pathname;
 ---
@@ -26,9 +27,9 @@ const pathname = Astro.url.pathname;
     </div>
 
     <!-- <ExternalLink href="/blog" openNewTab={false}>Blog</ExternalLink> -->
-    <ExternalLink href="/about" openNewTab={false}>About</ExternalLink>
-    <ExternalLink href="/gallery" openNewTab={false}>Gallery</ExternalLink>
-    <ExternalLink href="/build" openNewTab={false}>Process</ExternalLink>
-    <ExternalLink href="/contributors" openNewTab={false}>Contributors</ExternalLink>
-    <ExternalLink href="/acknowledgements" openNewTab={false}>Acknowledgements</ExternalLink>
+    <ExternalLink href="/about" openNewTab={false}  rel="external">About</ExternalLink>
+    <ExternalLink href="/gallery" openNewTab={false}  rel="external">Gallery</ExternalLink>
+    <ExternalLink href="/build" openNewTab={false}  rel="external">Process</ExternalLink>
+    <ExternalLink href="/contributors" openNewTab={false}  rel="external">Contributors</ExternalLink>
+    <ExternalLink href="/acknowledgements" openNewTab={false}  rel="external">Acknowledgements</ExternalLink>
 </footer>

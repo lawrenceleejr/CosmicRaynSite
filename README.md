@@ -1,13 +1,8 @@
-# Nikola Tesla Portfolio
-Nikola Tesla Portfolio is an Astro template built with of course Astro 5.7, React 19 and TailwindCSS 4
+# Website for Cosmic Rayn, UTK
 
-![Nikola Tesla Astro Portfolio](/public/social-image.jpg "Nikola Tesla Portfolio")
+Built with Astro using the Nikola Tesla theme.
 
-## Getting Started
-Clone Repository
-```sh
-git clone https://github.com/iann-mathaiya/nikola-tesla.git
-```
+Instructions below from the theme:
 
 Install Dependencies
 ```sh

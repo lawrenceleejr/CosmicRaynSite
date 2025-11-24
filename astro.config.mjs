@@ -10,12 +10,17 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
    output: 'server',
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+
+    build: {
+      target: 'esnext'
+    }
   },
 
   integrations: [react()],
 
   experimental: {
+    partialHydration: false,
     fonts: [{
       provider: fontProviders.google(),
       name: "Geist",
