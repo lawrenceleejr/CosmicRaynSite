@@ -2,7 +2,7 @@
 import RootLayout from "./RootLayout.astro";
 import Footer from "../components/footer.astro";
 import WarpBackground from "../components/warp-background";
-import Video from '../components/Video.astro';
+import Video from '../components/video';
 
 const { title, description } = Astro.props;
 
@@ -10,36 +10,25 @@ const pathname = Astro.url.pathname;
 ---
 
 <RootLayout title={title} description={description}>
+	<div class="w-full h-full max-sm:w-4 md:max-w-2xs xl:max-w-sm fixed -z-10 sm:bottom-4 sm:rounded-b-full overflow-hidden">
+
+	
+	<video 
+	transition:persist="video-player"
+	id="side-video"
+	autoplay
+	muted
+	loop
+	playsinline
+	class="absolute inset-0 w-full h-full object-cover object-[90%_40%]"
+	>
+	<source src="/earth.mp4" type="video/mp4" />
+	</video>
+	</div>
+
 	<div class="flex relative gap-4 w-full max-w-screen-xl">
 		<nav class="relative w-4 md:min-w-2xs xl:min-w-sm sm:min-h-screen sm:ml-4 sm:pb-4">
-			<div class="w-full h-full max-sm:w-4 md:max-w-2xs xl:max-w-sm fixed -z-10 sm:bottom-4 sm:rounded-b-full overflow-hidden">
-		
-				
-				<video 
-					id="side-video"
-					autoplay
-					muted
-					loop
-					playsinline
-					class="absolute inset-0 w-full h-full object-cover object-[90%_40%]"
-  				>
-					<source src="/earth.mp4" type="video/mp4" />
-					<!-- <source src="/Travel_Wide.mp4" type="video/mp4" /> -->
-				</video>
-				<!-- <Video client:load /> -->
 
-				<!-- <WarpBackground
-					color1="#ffffff"
-					color2="#27272a"
-					color3="#52525b"
-					speed={0.15}
-					swirl={1.5}
-					swirlIterations={10}
-					shapeScale={0.2}
-					client:load
-				/> -->
-
-			</div>
 		</nav>
 
 		<main class="relative"  >
@@ -49,4 +38,11 @@ const pathname = Astro.url.pathname;
 
 
 	</div>
+
+	<img 
+	src="/utklogo.png" 
+	alt="Logo" 
+	class="fixed top-0 right-0 max-w-[20%] z-20 pointer-events-none"
+	/>
+
 </RootLayout>

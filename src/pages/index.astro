@@ -9,10 +9,29 @@ import AvailableForWork from "../components/available.astro";
 
 <RootLayout>
 	<main>
-		<video id="bg-video" autoplay muted loop playsinline>
+
+		<video   id="bg-video" autoplay muted loop playsinline>
 		<!-- <source src="/earth.mp4" type="video/mp4" /> -->
 		<source src="/Travel_Wide.mp4" type="video/mp4" />
 		</video>
+
+		<script>
+		document.addEventListener('astro:page-load', () => {
+			// Find all videos and reload them
+			const videos = document.querySelectorAll('video');
+			videos.forEach(video => {
+			// Only reload if it's not already playing
+			if (video.paused && video.autoplay) {
+				video.load();
+				video.play().catch(() => {
+				// Autoplay might be blocked, that's okay
+				});
+			}
+			});
+		});
+		</script>
+
+		
 		<div id="overlay"></div>
 
 		<div class="group relative w-full min-h-dvh flex items-center justify-center">
@@ -23,9 +42,9 @@ import AvailableForWork from "../components/available.astro";
 				<div>
 					<!-- <H1 size="large"> Cosmic <br /> Rayn </H1> -->
 					 <img 
-					src="/Asset 13.png" 
+					src="/cosmicrayn.png" 
 					alt="Logo" 
-					class="fixed top-10 left-10 w-100 h-80 z-20 pointer-events-none"
+					class="fixed top-0 left-0 max-w-[25%] z-20 pointer-events-none"
 					/>
 				</div>
 
@@ -58,5 +77,11 @@ import AvailableForWork from "../components/available.astro";
 			alt="Logo" 
 			class="fixed bottom-30 right-4 w-80 h-60 z-20 pointer-events-none"
 		/> -->
+
+		<img 
+			src="/utklogo.png" 
+			alt="Logo" 
+			class="fixed top-0 right-0 max-w-[25%] z-20 pointer-events-none"
+		/>
 	</main>
 </RootLayout>
