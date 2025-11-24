@@ -12,7 +12,7 @@ import AvailableForWork from "../components/available.astro";
 
 		<video   id="bg-video" autoplay muted loop playsinline>
 		<!-- <source src="/earth.mp4" type="video/mp4" /> -->
-		<source src="/Travel_Wide.mp4" type="video/mp4" />
+		<source src="./Travel_Wide.mp4" type="video/mp4" />
 		</video>
 
 		<script>
@@ -51,8 +51,8 @@ import AvailableForWork from "../components/available.astro";
 				<div>
 					<div class="mb-2 sm:mb-4 flex items-center justify-between">
 						<div class="flex items-center gap-4">
-							<Link href="/about">About the project</Link>
-							<Link href="/gallery" variant="secondary">Gallery</Link>
+							<Link href="./about">About the project</Link>
+							<Link href="./gallery" variant="secondary">Gallery</Link>
 						</div>
 
 						<Navigation client:load>
@@ -62,9 +62,9 @@ import AvailableForWork from "../components/available.astro";
 
 							<!-- <Link href="/about" openNewTab={false} variant="secondary">About</Link> -->
 							<!-- <Link href="/gallery" openNewTab={false} variant="secondary">Gallery</Link> -->
-							<Link href="/build" openNewTab={false} variant="secondary">Process</Link>
-							<Link href="/contributors" openNewTab={false} variant="secondary">Contributors</Link>
-							<Link href="/acknowledgements" openNewTab={false} variant="secondary">Acknowledgements</Link>
+							<Link href="./build" openNewTab={false} variant="secondary">Process</Link>
+							<Link href="./contributors" openNewTab={false} variant="secondary">Contributors</Link>
+							<Link href="./acknowledgements" openNewTab={false} variant="secondary">Acknowledgements</Link>
 						</Navigation>
 						
 					</div>
@@ -79,7 +79,7 @@ import AvailableForWork from "../components/available.astro";
 		/> -->
 
 		<img 
-			src="/utklogo.png" 
+			src="./utklogo.png" 
 			alt="Logo" 
 			class="fixed top-0 right-0 max-w-[25%] z-20 pointer-events-none"
 		/>
