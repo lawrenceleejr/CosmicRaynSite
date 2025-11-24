@@ -2,8 +2,24 @@ import clsx from "clsx/lite";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
-export default function Navigation({ children }: { children: React.ReactNode; }) {
+type NavigationProps = {
+    children?: React.ReactNode;
+};
+
+export default function Navigation({ children }: NavigationProps) {
     const [isOpen, setIsOpen] = useState(false);
+
+    // Calculate the depth of the current page based on the browser's pathname
+    // e.g., "/" = 0, "/about/" = 0, "/blog/post/" = 1, "/blog/[...slug]/" = 1
+    const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
+    const segments = pathname.split('/').filter(s => s.length > 0);
+    const pathDepth = segments.length > 1 ? segments.length - 1 : 0;
+    
+    // Generate the relative path prefix based on depth
+    // depth 0 = root: "./"
+    // depth 1 = /blog/: "../"
+    // depth 2 = /blog/posts/: "../../"
+    const pathPrefix = pathDepth === 0 ? "./" : "../".repeat(pathDepth);
 
     return (
         <div className="flex items-center justify-center gap-12">
@@ -31,27 +47,27 @@ export default function Navigation({ children }: { children: React.ReactNode; })
 
                             <div className="fixed bottom-20 sm:bottom-32 left-4 sm:left-8 flex flex-col items-start justify-center gap-4">
 
-                                <MobileLink href="./">
+                                <MobileLink href={pathPrefix}>
                                     Home
                                 </MobileLink>
 
-                                <MobileLink href="./about">
+                                <MobileLink href={`${pathPrefix}about`}>
                                     About
                                 </MobileLink>
 
-                                <MobileLink href="./gallery">
+                                <MobileLink href={`${pathPrefix}gallery`}>
                                     Gallery
                                 </MobileLink>
 
-                                <MobileLink href="./build">
+                                <MobileLink href={`${pathPrefix}build`}>
                                     Process
                                 </MobileLink>
                                 
-                                <MobileLink href="./contributors">
+                                <MobileLink href={`${pathPrefix}contributors`}>
                                     Contributors
                                 </MobileLink>
 
-                                <MobileLink href="./acknowledgements">
+                                <MobileLink href={`${pathPrefix}acknowledgements`}>
                                     Acknowledgements
                                 </MobileLink>
 
