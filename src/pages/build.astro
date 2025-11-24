@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import H1 from "../components/h1.astro";
+import InfoLayout from "../layouts/InfoLayout.astro";
+import ACGenerator from "../assets/ac-generator.jpg";
+import FluidPropulsion from "../assets/fluid-propulsion.jpg";
+import ElectricMotor from "../assets/electro-magnetic-motor.jpg";
+
+import Image01 from "../assets/processphotos/DSCF3062.webp";
+import Image02 from "../assets/processphotos/DSCF3233.webp";
+import Image03 from "../assets/processphotos/DSCF3315.webp";
+import Image04 from "../assets/processphotos/DSCF3670.webp";
+import Image05 from "../assets/processphotos/DSCF3741.webp";
+import Image06 from "../assets/processphotos/DSCF4132.webp";
+import Image07 from "../assets/processphotos/DSCF4178.webp";
+import Image08 from "../assets/processphotos/DSCF4308.webp";
+import Image09 from "../assets/processphotos/DSCF4528.webp";
+import Image10 from "../assets/processphotos/DSCF4548.webp";
+import Image11 from "../assets/processphotos/IMG_1404.webp";
+
+const projects = [
+     {image: Image01, title: ""},
+     {image: Image02, title: ""},
+     {image: Image03, title: ""},
+     {image: Image04, title: ""},
+     {image: Image05, title: ""},
+     {image: Image06, title: ""},
+     {image: Image07, title: ""},
+     {image: Image08, title: ""},
+     {image: Image09, title: ""},
+     {image: Image10, title: ""},
+     {image: Image11, title: ""},
+     
+     
+     ];
+---
+
+<InfoLayout>
+     <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
+          <H1> Projects </H1>
+
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-16 sm:gap-8">
+               {projects.map((project) => (
+                    <li>
+                         <Image src={project.image} alt={project.title} class="aspect-[1/1.33] object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+                         <div class="p-1 sm:p-2">
+                              {/* <h2 class="text-base text-zinc-100">{project.title}</h2> */}
+                              {/* <p class="text-sm text-zinc-400 text-balance">{project.description}</p> */}
+                         </div>
+                    </li>
+               ))}
+          </ul>
+     </div>
+</InfoLayout>

@@ -1,0 +1,61 @@
+---
+import H1 from "../components/h1.astro";
+import InfoLayout from "../layouts/InfoLayout.astro";
+import ExternalLink from "../components/external-link.astro";
+---
+
+<InfoLayout>
+            <video id="bg-video" autoplay muted loop playsinline>
+			<source src="/earth.mp4" type="video/mp4" />
+			<!-- <source src="/Travel_Wide.mp4" type="video/mp4" /> -->
+			</video>
+     <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh flex flex-col justify-between">
+          <div>
+               <H1 >Acknowledgements </H1>
+
+               <p class="mt-4 md:mt-8 lg:mt-9 text-xs xl:text-lg text-zinc-400 text-balance">
+                    3D rendering using Blender<br><br>
+
+                    User Interface and Projection Control using TouchDesigner by Derivative<br><br>
+
+                    Neutron Star Collision Simulation:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Yi Qiu (Penn State), Sherwood Richers (UTK)<br>
+                    <br>
+
+                    Supernova Simulation:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sudarshan Neopane (UTK), Raph Hix (UTK)<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Produced using Flash-X (arXiv:2208.11630)<br>
+                    <br>
+
+                    Cosmic Ray Shower Simulation<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10 TeV Proton on Fixed Target Proton<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Produced using Pythia8 (arXiv:2203.11601)<br>
+                    <br>
+
+                    Website Design using Astro with an adapted Nikola Tesla Theme<br><br>
+
+                    Webpage Hosting on GitHub Pages<br><br>
+
+                    <br>
+               </p>
+
+               <div class="mt-6 sm:mt-12 text-xs flex flex-col gap-1">
+                    <a href="https://www.nsf.gov/awardsearch/show-award?AWD_ID=2235028" class="mb-8 w-fit group flex items-center gap-1 text-sm text-zinc-400 hover:text-zinc-50">
+                    Made possible with support from the National Science Foundation, under Award No. 2235028. 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="-rotate-45 group-hover:rotate-0 transition-all duration-300 ease-in-out" width="24" height="24" viewBox="0 0 24 24">
+                              <title>Link</title>
+                              <path fill="currentColor" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" opacity=".5"/>
+                              <path fill="currentColor" d="M13.53 8.47a.75.75 0 1 0-1.06 1.06l1.72 1.72H8a.75.75 0 0 0 0 1.5h6.19l-1.72 1.72a.75.75 0 1 0 1.06 1.06l3-3a.75.75 0 0 0 0-1.06z"/>
+                    </svg>
+                    </a>
+
+               </div>
+          </div>
+
+          <div>
+               <p class="text-xs text-zinc-500">University of Tennessee, Knoxville</p>
+               <p class="text-xs text-zinc-500">College of Arts and Sciences, Department of Physics & Astronomy</p>
+               <p class="text-xs text-zinc-500">College of Architecture & Design, School of Interior Architecture</p>
+          </div>
+     </div>
+</InfoLayout>

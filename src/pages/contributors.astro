@@ -1,0 +1,46 @@
+---
+import H1 from "../components/h1.astro";
+import InfoLayout from "../layouts/InfoLayout.astro";
+import ExternalLink from "../components/external-link.astro";
+---
+
+<InfoLayout>
+               <video id="bg-video" autoplay muted loop playsinline>
+			<source src="/earth.mp4" type="video/mp4" />
+			<!-- <source src="/Travel_Wide.mp4" type="video/mp4" /> -->
+			</video>
+     <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh flex flex-col justify-between">
+          <div>
+               <H1 >Contributors </H1>
+               <p class="mt-4 md:mt-8 lg:mt-12 text-sm xl:text-xl text-zinc-400 text-balance">
+                    This project is made possible by the contributions of dedicated students at the University of Tennessee, Knoxville in a Design/Build course in Fall 2025, taught jointly by Prof. David Matthews (School of Interior Architecture) and Prof. Lawrence Lee (Department of Physics & Astronomy).
+               </p>
+
+               <p class="mt-4 md:mt-8 lg:mt-9 text-xs xl:text-lg text-zinc-400 text-balance">
+                    Sophia Arnold<br>
+                    Margaret Bremner<br>
+                    Veronica Crosby<br>
+                    Nicole DiLorenzo<br>
+                    Kailyn Graham<br>
+                    Abby Harper<br>
+                    Mackenzie Henley<br>
+                    Micah Hillman<br>
+                    Sydney Horstman<br>
+                    Natalie Hugo<br>
+                    Devlin Jenkins<br>
+                    Lauren Jones<br>
+                    Maya Markowicz<br>
+                    Macy McDowell<br>
+                    Madison Niemi<br>
+                    <br>
+               </p>
+
+          </div>
+
+          <div>
+               <p class="text-xs text-zinc-500">University of Tennessee, Knoxville</p>
+               <p class="text-xs text-zinc-500">College of Arts and Sciences, Department of Physics & Astronomy</p>
+               <p class="text-xs text-zinc-500">College of Architecture & Design, School of Interior Architecture</p>
+          </div>
+     </div>
+</InfoLayout>
