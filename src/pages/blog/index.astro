@@ -1,24 +1,24 @@
 ---
 import clsx from "clsx";
-import { actions } from "astro:actions";
+import { getCategories, filterByCategory } from "../../lib/actions/categories";
 import H1 from "../../components/h1.astro";
 import { formatDate } from "../../lib/utils";
 import InfoLayout from "../../layouts/InfoLayout.astro";
 
-const categoriesResult = await Astro.callAction(actions.categories.getCategories, null);
-const categories = categoriesResult?.data?.categories || [];
+const categoriesResult = await getCategories();
+const categories = categoriesResult?.categories || [];
 
-const selectedCategory = Astro.url.searchParams.get("category") || "all";
+// For static builds we render all articles at build time. The client will
+// read the `category` query param and filter/highlight on the browser.
+const selectedCategory = "all";
 
-const articlesResult = await Astro.callAction(actions.categories.filterByCategory, {
-    category: selectedCategory,
-});
+const articlesResult = await filterByCategory({ category: selectedCategory });
 
-if (articlesResult?.error) {
-    console.log("error", articlesResult.error);
+if (!articlesResult?.success) {
+    console.log("error fetching articles", articlesResult);
 }
 
-const articles = articlesResult?.data?.articles || [];
+const articles = articlesResult?.articles || [];
 ---
 
 <InfoLayout>
@@ -27,7 +27,7 @@ const articles = articlesResult?.data?.articles || [];
 
         <ul class="mt-4 flex items-center gap-4">
             <li>
-                <a href="/blog" class={clsx("w-fit px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out",
+                <a href="/blog" data-category="all" class={clsx("w-fit px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out",
                     selectedCategory === "all" ? "text-white bg-zinc-100/20 outline-2 outline-offset-2 outline-zinc-100/20" : "text-zinc-400 hover:text-zinc-300"
                 )}>
                     All
@@ -39,6 +39,7 @@ const articles = articlesResult?.data?.articles || [];
                     <li>
                         <a
                             href={`/blog?category=${category.toLowerCase()}`}
+                            data-category={category.toLowerCase()}
                             class={clsx("w-fit px-4 py-1 text-sm bg-transparent rounded-full transition-all duration-300 ease-in-out",
                                 selectedCategory === category.toLowerCase() ? "text-white bg-zinc-100/20 outline-2 outline-offset-2 outline-zinc-100/20" : "text-zinc-400 hover:text-zinc-200"
                             )}

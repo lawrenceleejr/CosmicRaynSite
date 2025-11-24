@@ -4,11 +4,14 @@ import { defineConfig, fontProviders } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@astrojs/react';
 
-import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
-   output: 'server',
+  // Produce a static site (outputs to `dist/`) so GitHub Pages can serve the
+  // entire exported site. Previously this was set to `server` with the
+  // Vercel adapter which generates server-side artifacts instead of a full
+  // static `dist/` folder.
+  output: 'static',
   vite: {
     plugins: [tailwindcss()],
   },
@@ -24,5 +27,6 @@ export default defineConfig({
     }]
   },
 
-  adapter: vercel()
+  // No adapter required for a static site. If you prefer an adapter, you
+  // can install and enable `@astrojs/static` here.
 });
