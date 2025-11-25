@@ -75,10 +75,10 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 				if (segments.length === 0) {
 				depth = 0;
 				} else {
-				const last = segments[segments.length - 1];
-				const looksLikeFile = /\.[a-zA-Z0-9]+$/.test(last);
-				depth = looksLikeFile ? segments.length - 1 : segments.length;
-				depth = depth-1;
+				// const last = segments[segments.length - 1];
+				// const looksLikeFile = /\.[a-zA-Z0-9]+$/.test(last);
+				// depth = looksLikeFile ? segments.length - 1 : segments.length;
+				depth = segments.length-1;
 				}
 
 				const prefix = depth === 0 ? './' : '../'.repeat(depth);
@@ -97,6 +97,7 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 
 				// Set .src to force the browser to (re)load the computed URL.
 				img.src = fixed;
+				img.src = img.src;
 				}
 			} catch (err) {
 				// swallow errors quietly (or console.error if you prefer)
