@@ -77,6 +77,7 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 							if (src && !src.startsWith('/') && !src.startsWith('http')) {
 								const cleanPath = src.startsWith('./') ? src.slice(2) : src;
 								img.setAttribute('src', pathPrefix + cleanPath);
+								img.src = img.src;
 							}
 						}
 
