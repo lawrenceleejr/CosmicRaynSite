@@ -107,6 +107,7 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 
 				// Run when Astro client router signals a page load (works for SPA nav)
 				document.addEventListener('astro:page-load', fixRelativeAssets);
+				document.addEventListener('astro:after-swap', fixRelativeAssets);
 
 				// Also run on history navigation (back/forward)
 				window.addEventListener('popstate', fixRelativeAssets);
