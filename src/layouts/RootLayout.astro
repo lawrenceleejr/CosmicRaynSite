@@ -81,7 +81,7 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 				depth = segments.length-1;
 				}
 
-				const prefix = depth === 0 ? './' : '../'.repeat(depth);
+				const prefix = depth === 0 ? './' : '../'.repeat(depth-1);
 
 				for (const img of document.querySelectorAll('img')) {
 				const raw = img.getAttribute('src');
