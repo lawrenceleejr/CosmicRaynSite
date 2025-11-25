@@ -65,43 +65,44 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 			// added so assets resolve correctly regardless of the current URL.
 			(function () {
 				function fixRelativeAssets() {
-				try {
-					// Normalize pathname (remove trailing slash except for root)
-					const pathname = window.location.pathname === '/' ? '/' : window.location.pathname.replace(/\/$/, '');
-					const segments = pathname === '/' ? [] : pathname.split('/').filter(Boolean);
+			try {
+				// Normalize pathname (remove trailing slash except for root)
+				const pathname = window.location.pathname === '/' ? '/' : window.location.pathname.replace(/\/$/, '');
+				const segments = pathname === '/' ? [] : pathname.split('/').filter(Boolean);
 
-					// Decide whether last segment looks like a file (has an extension)
-					let depth;
-					if (segments.length === 0) {
-					depth = 0;
-					} else {
-					const last = segments[segments.length - 1];
-					const looksLikeFile = /\.[a-zA-Z0-9]+$/.test(last);
-					depth = looksLikeFile ? segments.length - 1 : segments.length;
-					}
-
-					const prefix = depth === 0 ? './' : '../'.repeat(depth);
-
-					for (const img of document.querySelectorAll('img')) {
-					const raw = img.getAttribute('src');
-					if (!raw) continue;
-					// ignore absolute URLs
-					if (raw.startsWith('/') || raw.startsWith('http')) continue;
-					// If the src already begins with ../ or ./, remove only a leading ./ (we treat ../ as already relative up)
-					const clean = raw.startsWith('./') ? raw.slice(2) : raw;
-					const fixed = prefix + clean;
-
-					// If the attribute is already exactly that, nothing to do.
-					if (img.getAttribute('src') === fixed) continue;
-
-					// Set .src to force the browser to (re)load the computed URL.
-					img.src = fixed;
-					}
-				} catch (err) {
-					// swallow errors quietly (or console.error if you prefer)
-					console.error('fixRelativeAssets error', err);
+				// Decide whether last segment looks like a file (has an extension)
+				let depth;
+				if (segments.length === 0) {
+				depth = 0;
+				} else {
+				const last = segments[segments.length - 1];
+				const looksLikeFile = /\.[a-zA-Z0-9]+$/.test(last);
+				depth = looksLikeFile ? segments.length - 1 : segments.length;
+				depth = depth-1;
 				}
+
+				const prefix = depth === 0 ? './' : '../'.repeat(depth);
+
+				for (const img of document.querySelectorAll('img')) {
+				const raw = img.getAttribute('src');
+				if (!raw) continue;
+				// ignore absolute URLs
+				if (raw.startsWith('/') || raw.startsWith('http')) continue;
+				// If the src already begins with ../ or ./, remove only a leading ./ (we treat ../ as already relative up)
+				const clean = raw.startsWith('./') ? raw.slice(2) : raw;
+				const fixed = prefix + clean;
+
+				// If the attribute is already exactly that, nothing to do.
+				if (img.getAttribute('src') === fixed) continue;
+
+				// Set .src to force the browser to (re)load the computed URL.
+				img.src = fixed;
 				}
+			} catch (err) {
+				// swallow errors quietly (or console.error if you prefer)
+				console.error('fixRelativeAssets error', err);
+			}
+			}
 
 				// Run on initial DOMContentLoaded
 				document.addEventListener('DOMContentLoaded', fixRelativeAssets);
