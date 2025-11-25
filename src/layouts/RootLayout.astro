@@ -38,10 +38,6 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 		<ClientRouter />
 		<LoadingIndicator color="#f4f4f5" height="2px" />
 
-	</head>
-	<body class="font-sans min-h-screen bg-zinc-900">
-
-		<slot />
 
 		<!-- Client-side helper: mark links with data-href matching location.pathname -->
 		<script>
@@ -129,6 +125,12 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 			})();
 		}
 		</script>
+
+	</head>
+	<body class="font-sans min-h-screen bg-zinc-900">
+
+		<slot />
+
 	</body>
 </html>
 
