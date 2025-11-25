@@ -102,26 +102,36 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 					// }
 				}
 
-				// Run on initial DOMContentLoaded
-				document.addEventListener('DOMContentLoaded', fixRelativeAssets);
+				// // Run on initial DOMContentLoaded
+				// document.addEventListener('DOMContentLoaded', fixRelativeAssets);
 
-				// Run when Astro client router signals a page load (works for SPA nav)
-				document.addEventListener('astro:page-load', fixRelativeAssets);
+				// // Run when Astro client router signals a page load (works for SPA nav)
+				// document.addEventListener('astro:page-load', fixRelativeAssets);
+				// document.addEventListener('astro:after-swap', fixRelativeAssets);
+
+				// // Also run on history navigation (back/forward)
+				// window.addEventListener('popstate', fixRelativeAssets);
+
+				// DON’T trigger on early DOM swap
+				document.addEventListener('astro:page-load', () => {
+				requestAnimationFrame(() => fixRelativeAssets());
+				});
+
 				document.addEventListener('astro:after-swap', fixRelativeAssets);
-
-				// Also run on history navigation (back/forward)
+				document.addEventListener('DOMContentLoaded', fixRelativeAssets);
 				window.addEventListener('popstate', fixRelativeAssets);
 
+
 				// MutationObserver to catch dynamically-inserted nodes (client navigation)
-				const mo = new MutationObserver((mutations) => {
-					for (const m of mutations) {
-						if (m.addedNodes && m.addedNodes.length) {
-							fixRelativeAssets();
-							break;
-						}
-					}
-				});
-				mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+				// const mo = new MutationObserver((mutations) => {
+				// 	for (const m of mutations) {
+				// 		if (m.addedNodes && m.addedNodes.length) {
+				// 			fixRelativeAssets();
+				// 			break;
+				// 		}
+				// 	}
+				// });
+				// mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
 			})();
 		}
 		</script>
