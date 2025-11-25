@@ -61,44 +61,44 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 			});
 
 			// Auto-fix relative paths for images and videos based on page depth
-			document.addEventListener('astro:page-load', function () {
-				try {
-					const pathname = window.location.pathname;
-					const segments = pathname.split('/').filter(s => s.length > 0);
-					const pathDepth = segments.length > 1 ? segments.length - 1 : 0;
-					const pathPrefix = pathDepth === 0 ? './' : '../'.repeat(pathDepth);
+			// document.addEventListener('astro:page-load', function () {
+			// 	try {
+			// 		const pathname = window.location.pathname;
+			// 		const segments = pathname.split('/').filter(s => s.length > 0);
+			// 		const pathDepth = segments.length > 1 ? segments.length - 1 : 0;
+			// 		const pathPrefix = pathDepth === 0 ? './' : '../'.repeat(pathDepth);
 
-					// Fix img src attributes that are relative (don't start with / or http)
-					for (const img of document.querySelectorAll('img')) {
-						const src = img.getAttribute('src');
-						if (src && !src.startsWith('/') && !src.startsWith('http')) {
-							// Remove leading ./ if present
-							const cleanPath = src.startsWith('./') ? src.slice(2) : src;
-							img.setAttribute('src', pathPrefix + cleanPath);
-						}
-					}
+			// 		// Fix img src attributes that are relative (don't start with / or http)
+			// 		for (const img of document.querySelectorAll('img')) {
+			// 			const src = img.getAttribute('src');
+			// 			if (src && !src.startsWith('/') && !src.startsWith('http')) {
+			// 				// Remove leading ./ if present
+			// 				const cleanPath = src.startsWith('./') ? src.slice(2) : src;
+			// 				img.setAttribute('src', pathPrefix + cleanPath);
+			// 			}
+			// 		}
 
-					// Fix video source src attributes that are relative
-					for (const source of document.querySelectorAll('source')) {
-						const src = source.getAttribute('src');
-						if (src && !src.startsWith('/') && !src.startsWith('http')) {
-							const cleanPath = src.startsWith('./') ? src.slice(2) : src;
-							source.setAttribute('src', pathPrefix + cleanPath);
-						}
-					}
+			// 		// Fix video source src attributes that are relative
+			// 		for (const source of document.querySelectorAll('source')) {
+			// 			const src = source.getAttribute('src');
+			// 			if (src && !src.startsWith('/') && !src.startsWith('http')) {
+			// 				const cleanPath = src.startsWith('./') ? src.slice(2) : src;
+			// 				source.setAttribute('src', pathPrefix + cleanPath);
+			// 			}
+			// 		}
 
-					// Fix video src attributes that are relative
-					for (const video of document.querySelectorAll('video[src]')) {
-						const src = video.getAttribute('src');
-						if (src && !src.startsWith('/') && !src.startsWith('http')) {
-							const cleanPath = src.startsWith('./') ? src.slice(2) : src;
-							video.setAttribute('src', pathPrefix + cleanPath);
-						}
-					}
-				} catch (e) {
-					/* ignore */
-				}
-			});
+			// 		// Fix video src attributes that are relative
+			// 		for (const video of document.querySelectorAll('video[src]')) {
+			// 			const src = video.getAttribute('src');
+			// 			if (src && !src.startsWith('/') && !src.startsWith('http')) {
+			// 				const cleanPath = src.startsWith('./') ? src.slice(2) : src;
+			// 				video.setAttribute('src', pathPrefix + cleanPath);
+			// 			}
+			// 		}
+			// 	} catch (e) {
+			// 		/* ignore */
+			// 	}
+			// });
 		}
 		</script>
 	</body>
