@@ -60,45 +60,68 @@ const defaultDescription = "Cosmic Rayn: An Interactive Cosmic Ray Experience";
 				}
 			});
 
-			// Auto-fix relative paths for images and videos based on page depth
-			// document.addEventListener('astro:page-load', function () {
-			// 	try {
-			// 		const pathname = window.location.pathname;
-			// 		const segments = pathname.split('/').filter(s => s.length > 0);
-			// 		const pathDepth = segments.length > 1 ? segments.length - 1 : 0;
-			// 		const pathPrefix = pathDepth === 0 ? './' : '../'.repeat(pathDepth);
+			// Auto-fix relative paths for images and videos based on page depth.
+			// This runs on initial load, on SPA navigations, and when new nodes are
+			// added so assets resolve correctly regardless of the current URL.
+			(function () {
+				function fixRelativeAssets() {
+					try {
+						const pathname = window.location.pathname;
+						const segments = pathname.split('/').filter(s => s.length > 0);
+						const pathDepth = segments.length > 2 ? segments.length - 2 : 0;
+						const pathPrefix = pathDepth === 0 ? './' : '../'.repeat(pathDepth);
 
-			// 		// Fix img src attributes that are relative (don't start with / or http)
-			// 		for (const img of document.querySelectorAll('img')) {
-			// 			const src = img.getAttribute('src');
-			// 			if (src && !src.startsWith('/') && !src.startsWith('http')) {
-			// 				// Remove leading ./ if present
-			// 				const cleanPath = src.startsWith('./') ? src.slice(2) : src;
-			// 				img.setAttribute('src', pathPrefix + cleanPath);
-			// 			}
-			// 		}
+						// Fix img src attributes that are relative (don't start with / or http)
+						for (const img of document.querySelectorAll('img')) {
+							const src = img.getAttribute('src');
+							if (src && !src.startsWith('/') && !src.startsWith('http')) {
+								const cleanPath = src.startsWith('./') ? src.slice(2) : src;
+								img.setAttribute('src', pathPrefix + cleanPath);
+							}
+						}
 
-			// 		// Fix video source src attributes that are relative
-			// 		for (const source of document.querySelectorAll('source')) {
-			// 			const src = source.getAttribute('src');
-			// 			if (src && !src.startsWith('/') && !src.startsWith('http')) {
-			// 				const cleanPath = src.startsWith('./') ? src.slice(2) : src;
-			// 				source.setAttribute('src', pathPrefix + cleanPath);
-			// 			}
-			// 		}
+						// Fix <source> elements (video/audio)
+						for (const source of document.querySelectorAll('source')) {
+							const src = source.getAttribute('src');
+							if (src && !src.startsWith('/') && !src.startsWith('http')) {
+								const cleanPath = src.startsWith('./') ? src.slice(2) : src;
+								source.setAttribute('src', pathPrefix + cleanPath);
+							}
+						}
 
-			// 		// Fix video src attributes that are relative
-			// 		for (const video of document.querySelectorAll('video[src]')) {
-			// 			const src = video.getAttribute('src');
-			// 			if (src && !src.startsWith('/') && !src.startsWith('http')) {
-			// 				const cleanPath = src.startsWith('./') ? src.slice(2) : src;
-			// 				video.setAttribute('src', pathPrefix + cleanPath);
-			// 			}
-			// 		}
-			// 	} catch (e) {
-			// 		/* ignore */
-			// 	}
-			// });
+						// Fix video[src] attributes
+						for (const video of document.querySelectorAll('video[src]')) {
+							const src = video.getAttribute('src');
+							if (src && !src.startsWith('/') && !src.startsWith('http')) {
+								const cleanPath = src.startsWith('./') ? src.slice(2) : src;
+								video.setAttribute('src', pathPrefix + cleanPath);
+							}
+						}
+					} catch (e) {
+						/* ignore */
+					}
+				}
+
+				// Run on initial DOMContentLoaded
+				document.addEventListener('DOMContentLoaded', fixRelativeAssets);
+
+				// Run when Astro client router signals a page load (works for SPA nav)
+				document.addEventListener('astro:page-load', fixRelativeAssets);
+
+				// Also run on history navigation (back/forward)
+				window.addEventListener('popstate', fixRelativeAssets);
+
+				// MutationObserver to catch dynamically-inserted nodes (client navigation)
+				const mo = new MutationObserver((mutations) => {
+					for (const m of mutations) {
+						if (m.addedNodes && m.addedNodes.length) {
+							fixRelativeAssets();
+							break;
+						}
+					}
+				});
+				mo.observe(document.documentElement || document.body, { childList: true, subtree: true });
+			})();
 		}
 		</script>
 	</body>
