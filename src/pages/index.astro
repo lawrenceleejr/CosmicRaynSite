@@ -40,11 +40,66 @@ import AvailableForWork from "../components/available.astro";
 
 			<div class="p-4 sm:p-8 absolute w-full h-dvh flex flex-col justify-between z-10">
 				<div>
+
+
+					<script>
+					document.addEventListener('astro:page-load', () => {
+						// Find all videos and reload them
+						const videos = document.querySelectorAll('video');
+						videos.forEach(video => {
+						// Only reload if it's not already playing
+						if (video.paused && video.autoplay) {
+							video.load();
+							video.play().catch(() => {
+							// Autoplay might be blocked, that's okay
+							});
+						}
+						});
+
+						// Reveal logo with a subtle blur -> clear animation for a luxe feel
+						const logo = document.querySelector('img.logo-reveal');
+						if (logo) {
+							// Small delay so the page paints first, gives a nicer entrance
+							setTimeout(() => logo.classList.add('loaded'), 120);
+						}
+					});
+					</script>
+
+					<style>
+					:root { --logo-blur: 18px; }
+
+					/* Luxurious blur-to-sharp reveal for the logo */
+					.logo-reveal {
+						filter: blur(var(--logo-blur)) saturate(.95);
+						opacity: 0;
+						transform: translateY(8px) scale(.995);
+						transition: filter 900ms cubic-bezier(.2,.9,.3,1), opacity 900ms ease, transform 900ms cubic-bezier(.2,.9,.3,1);
+						will-change: filter, opacity, transform;
+						pointer-events: none;
+					}
+					.logo-reveal.loaded {
+						filter: blur(0) saturate(1);
+						opacity: 1;
+						transform: translateY(0) scale(1);
+					}
+
+					/* Respect reduced motion preference */
+					@media (prefers-reduced-motion: reduce) {
+						.logo-reveal,
+						.logo-reveal.loaded {
+							transition: none;
+							filter: none;
+							transform: none;
+							opacity: 1;
+						}
+					}
+					</style>
+
 					<!-- <H1 size="large"> Cosmic <br /> Rayn </H1> -->
 					 <img 
-					src="./cosmicrayn.png" 
+					src="./logo_white.png" 
 					alt="Logo" 
-					class="fixed max-sm:top-[100px] max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:max-w-[80%] sm:top-0 sm:left-0 sm:max-w-[25%] z-20 pointer-events-none"
+					class="logo-reveal fixed max-sm:top-[100px] max-sm:left-1/2 max-sm:-translate-x-1/2 max-sm:max-w-[80%] sm:top-0 sm:left-[50px] sm:max-w-[45%] sm:max-w-[500px] z-20 pointer-events-none"
 					/>
 				</div>
 
