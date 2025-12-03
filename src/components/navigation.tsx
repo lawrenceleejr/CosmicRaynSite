@@ -19,7 +19,7 @@ export default function Navigation({ children }: NavigationProps) {
     // depth 0 = root: "./"
     // depth 1 = /blog/: "../"
     // depth 2 = /blog/posts/: "../../"
-    const pathPrefix = pathDepth === 0 ? "./" : "../".repeat(pathDepth);
+    const pathPrefix = pathDepth === 0 ? "./" : "../".repeat(pathDepth+1);
 
     return (
         <div className="flex items-center justify-center gap-12">
