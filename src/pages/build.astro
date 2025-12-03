@@ -1,60 +1,79 @@
 ---
 import { Image } from 'astro:assets';
 import H1 from "../components/h1.astro";
+import H2 from "../components/h2.astro";
 import InfoLayout from "../layouts/InfoLayout.astro";
 import ACGenerator from "../assets/ac-generator.jpg";
 import FluidPropulsion from "../assets/fluid-propulsion.jpg";
 import ElectricMotor from "../assets/electro-magnetic-motor.jpg";
 
-import Image01 from "../assets/processphotos/small-DSCF3062.webp";
-import Image02 from "../assets/processphotos/small-DSCF3233.webp";
-import Image03 from "../assets/processphotos/small-DSCF3315.webp";
-import Image04 from "../assets/processphotos/small-DSCF3670.webp";
-import Image05 from "../assets/processphotos/small-DSCF3741.webp";
-import Image06 from "../assets/processphotos/small-DSCF4132.webp";
-import Image07 from "../assets/processphotos/small-DSCF4178.webp";
-import Image08 from "../assets/processphotos/small-DSCF4308.webp";
-import Image09 from "../assets/processphotos/small-DSCF4528.webp";
-import Image10 from "../assets/processphotos/small-DSCF4548.webp";
-import Image11 from "../assets/processphotos/small-IMG_1404.webp";
+import ImageHandCover01 from "../assets/processphotos/handbox.webp";
+import ImageCrateCover01 from "../assets/processphotos/crate1.webp";
+import ImageCrateCover02 from "../assets/processphotos/crate2.webp";
 
-import Image12 from "../assets/processphotos/small-DSCF4367.webp";
-import Image13 from "../assets/processphotos/small-IMG_0359.webp";
-import Image14 from "../assets/processphotos/small-IMG_0361.webp";
-import Image15 from "../assets/processphotos/small-IMG_0363.webp";
+import ImageDomeCover01 from "../assets/processphotos/dome.webp";
+import ImageDomeCover02 from "../assets/processphotos/domeconnectors.webp";
+
+import ImageGraphicsCover01 from "../assets/processphotos/colors.webp";
 
 
-import Image16 from "../assets/processphotos/small-DSCF4783.webp";
-import Image17 from "../assets/processphotos/small-DSCF4807.webp";
-import Image18 from "../assets/processphotos/small-DSCF4954.webp";
-import Image19 from "../assets/processphotos/small-DSCF4990.webp";
-import Image20 from "../assets/processphotos/small-DSCF5005.webp";
-import Image21 from "../assets/processphotos/small-DSCF5069.webp";
+import ImageHand01 from "../assets/processphotos/small-DSCF3062.webp";
+import ImageHand02 from "../assets/processphotos/small-DSCF3315.webp";
+import ImageHand03 from "../assets/processphotos/small-DSCF3741.webp";
+import ImageHand04 from "../assets/processphotos/small-DSCF4132.webp";
+import ImageHand05 from "../assets/processphotos/small-DSCF4178.webp";
+import ImageHand06 from "../assets/processphotos/small-DSCF4528.webp";
+import ImageHand07 from "../assets/processphotos/small-DSCF4548.webp";
+import ImageHand08 from "../assets/processphotos/small-DSCF4367.webp";
+import ImageHand09 from "../assets/processphotos/small-DSCF4807.webp";
+import ImageHand10 from "../assets/processphotos/small-DSCF4954.webp";
 
 
-const projects = [
-     {image: Image01, title: ""},
-     {image: Image02, title: ""},
-     {image: Image03, title: ""},
-     {image: Image04, title: ""},
-     {image: Image05, title: ""},
-     {image: Image06, title: ""},
-     {image: Image07, title: ""},
-     {image: Image08, title: ""},
-     {image: Image09, title: ""},
-     {image: Image10, title: ""},
-     {image: Image11, title: ""},
-     {image: Image12, title: ""},
-     {image: Image13, title: ""},
-     {image: Image14, title: ""},
-     {image: Image15, title: ""},
-     {image: Image16, title: ""},
-     {image: Image17, title: ""},
-     {image: Image18, title: ""},
-     {image: Image19, title: ""},
-     {image: Image20, title: ""},
-     {image: Image21, title: ""},     
-     
+import ImageCrate01 from "../assets/processphotos/small-DSCF3233.webp";
+
+import ImageDome01 from "../assets/processphotos/small-DSCF3670.webp";
+import ImageDome02 from "../assets/processphotos/small-DSCF4308.webp";
+import ImageDome03 from "../assets/processphotos/small-IMG_0359.webp";
+import ImageDome04 from "../assets/processphotos/small-IMG_0361.webp";
+import ImageDome05 from "../assets/processphotos/small-IMG_0363.webp";
+import ImageDome06 from "../assets/processphotos/small-DSCF4783.webp";
+import ImageDome07 from "../assets/processphotos/small-DSCF5069.webp";
+
+import ImageOverall01 from "../assets/processphotos/small-IMG_1404.webp";
+import ImageOverall02 from "../assets/processphotos/small-DSCF4990.webp";
+import ImageOverall03 from "../assets/processphotos/small-DSCF5005.webp";
+
+
+const projects_hand = [
+     {image: ImageHand01, title: ""},
+     {image: ImageHand02, title: ""},
+     {image: ImageHand03, title: ""},
+     {image: ImageHand04, title: ""},
+     {image: ImageHand05, title: ""},
+     {image: ImageHand06, title: ""},
+     {image: ImageHand07, title: ""},
+     {image: ImageHand08, title: ""},
+     {image: ImageHand09, title: ""},
+     {image: ImageHand10, title: ""},   
+     ];
+const projects_crate = [
+     {image: ImageCrate01, title: ""},
+     ];
+
+const projects_dome = [
+     {image: ImageDome01, title: ""},
+     {image: ImageDome02, title: ""},
+     {image: ImageDome03, title: ""},
+     {image: ImageDome04, title: ""},
+     {image: ImageDome05, title: ""},
+     {image: ImageDome06, title: ""},
+     {image: ImageDome07, title: ""},
+     ];
+
+const projects_overall = [
+     {image: ImageOverall01, title: ""},
+     {image: ImageOverall02, title: ""},
+     {image: ImageOverall03, title: ""},
      ];
 ---
 
@@ -62,16 +81,86 @@ const projects = [
      <div class="p-4 sm:pt-8 sm:px-12 pb-20 min-h-dvh">
           <H1> Process </H1>
 
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-16 sm:gap-8">
+               <div class="p-1 sm:p-2">
+                    {<H2>Touch A Cosmic Ray</H2>}<br>
+                    {<p class="text-sm text-zinc-400 text-balance">The team designed a new way to interact with cosmic rays using advanced technology, constructing a particle detection system using scintillators from CAEN, constructing a user interface including a multi-layer dichroic and smart film, a water-jet cut and rivetted base cabinet, and arduino-controlled electronics control.</p>}
+               </div>
+               <Image src={ImageHandCover01} alt={""} class=" object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+          </ul>
+
           <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-16 sm:gap-8">
-               {projects.map((project) => (
+               {projects_hand.map((project) => (
                     <li>
                          <Image src={project.image} alt={project.title} class="aspect-[1/1.33] object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
                          <div class="p-1 sm:p-2">
-                              {/* <h2 class="text-base text-zinc-100">{project.title}</h2> */}
-                              {/* <p class="text-sm text-zinc-400 text-balance">{project.description}</p> */}
                          </div>
                     </li>
                ))}
           </ul>
+
+
+
+
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-16 sm:gap-8">
+               <div class="p-1 sm:p-2">
+                    {<H2>Services and Transportation</H2>}<br>
+                    {<p class="text-sm text-zinc-400 text-balance">The team designed a custom series of interlocking CNC cut crates to safely protect and transport delicate components of the exhibition. The system was designed to ease setup, teardown, and transportation.</p>}
+               </div>
+               <Image src={ImageCrateCover01} alt={""} class=" object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+               <Image src={ImageCrateCover02} alt={""} class=" object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+          </ul>
+
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-16 sm:gap-8">
+               {projects_crate.map((project) => (
+                    <li>
+                         <Image src={project.image} alt={project.title} class="aspect-[1/1.33] object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+                         <div class="p-1 sm:p-2">
+                         </div>
+                    </li>
+               ))}
+          </ul>
+
+
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-16 sm:gap-8">
+               <div class="p-1 sm:p-2">
+                    {<H2>Structure</H2>}<br>
+                    {<p class="text-sm text-zinc-400 text-balance">The largest element of the experience, the housing tent, was designed as a partial geodesic dome to draw attention upwards towards space. This project required use of 3D modeling, advanced sewing techniques, welding custom connectors for fiberglass supports, and complex projection mapping for an immersive experience throughout the structure.</p>}
+               </div>
+               <Image src={ImageDomeCover01} alt={""} class=" object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+               <Image src={ImageDomeCover02} alt={""} class=" object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+          </ul>
+
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-16 sm:gap-8">
+               {projects_dome.map((project) => (
+                    <li>
+                         <Image src={project.image} alt={project.title} class="aspect-[1/1.33] object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+                         <div class="p-1 sm:p-2">
+                         </div>
+                    </li>
+               ))}
+          </ul>
+
+
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-1 gap-16 sm:gap-8">
+               <div class="p-1 sm:p-2">
+                    {<H2>Audio and Visual Identity</H2>}<br>
+                    {<p class="text-sm text-zinc-400 text-balance">The team constructed a full visual identity, including color palettes, typography, logos, and striking signage. To complete the immersive experience, the team created a transporting audio experience with custom voiceover and soundscapes to complement a wide variety of visuals, include some made from scientific simulations of astrophysical events, and rendered in 3D using Blender.</p>}
+               </div>
+               <Image src={ImageGraphicsCover01} alt={""} class=" object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+          </ul>
+
+          <ul class="mt-4 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-16 sm:gap-8">
+               {projects_overall.map((project) => (
+                    <li>
+                         <Image src={project.image} alt={project.title} class="aspect-[1/1.33] object-center object-cover rounded-lg shadow-lg mb-4 sm:mb-0 sm:mr-4" />
+                         <div class="p-1 sm:p-2">
+                         </div>
+                    </li>
+               ))}
+          </ul>
+
+
+
      </div>
 </InfoLayout>
