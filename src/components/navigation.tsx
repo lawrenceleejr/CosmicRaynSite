@@ -47,27 +47,27 @@ export default function Navigation({ children }: NavigationProps) {
 
                             <div className="fixed bottom-20 sm:bottom-32 left-4 sm:left-8 flex flex-col items-start justify-center gap-4">
 
-                                <MobileLink href={pathPrefix}>
+                                <MobileLink href={`${pathPrefix}/../`}>
                                     Home
                                 </MobileLink>
 
-                                <MobileLink href={`${pathPrefix}about`}>
+                                <MobileLink href={`${pathPrefix}/../about`}>
                                     About
                                 </MobileLink>
 
-                                <MobileLink href={`${pathPrefix}gallery`}>
+                                <MobileLink href={`${pathPrefix}/../gallery`}>
                                     Gallery
                                 </MobileLink>
 
-                                <MobileLink href={`${pathPrefix}build`}>
+                                <MobileLink href={`${pathPrefix}/../build`}>
                                     Process
                                 </MobileLink>
                                 
-                                <MobileLink href={`${pathPrefix}contributors`}>
+                                <MobileLink href={`${pathPrefix}/../contributors`}>
                                     Contributors
                                 </MobileLink>
 
-                                <MobileLink href={`${pathPrefix}acknowledgements`}>
+                                <MobileLink href={`${pathPrefix}/../acknowledgements`}>
                                     Acknowledgements
                                 </MobileLink>
 
